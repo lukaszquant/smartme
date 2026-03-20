@@ -7,7 +7,7 @@ export default function BlockchainTranscript() {
       title="Blockchain Explained"
       subtitle="A walk-friendly audio transcript with everyday analogies and real-world examples"
       html={html}
-      guidePath="/blockchain"
+      interactivePath="/blockchain/interactive"
       downloadFile="/downloads/blockchain-transcript.docx"
       color="#42b4f5"
     />

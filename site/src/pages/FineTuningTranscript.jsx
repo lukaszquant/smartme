@@ -7,7 +7,7 @@ export default function FineTuningTranscript() {
       title="Why Is the Universe Just Right?"
       subtitle="A walking narration on fine-tuning, the multiverse, and why the answer might be wrong"
       html={html}
-      guidePath="/fine-tuning"
+      interactivePath="/fine-tuning/interactive"
       downloadFile="/downloads/fine-tuning-transcript.docx"
       color="#a78bfa"
     />

@@ -1,18 +1,12 @@
 import MontyHallGuide from "@pub/montyhall/monty-hall.jsx";
 import { GuideTranscriptBar } from "../components/GuideFooter";
 
-const transcriptProps = {
-  transcriptPath: "/monty-hall/transcript",
-  downloadFile: "/downloads/monty-hall-transcript.docx",
-  color: "#f0c040",
-};
-
 export default function MontyHall() {
   return (
     <>
-      <GuideTranscriptBar {...transcriptProps} />
+      <GuideTranscriptBar essayPath="/monty-hall" color="#f0c040" />
       <MontyHallGuide />
-      <GuideTranscriptBar {...transcriptProps} />
+      <GuideTranscriptBar essayPath="/monty-hall" color="#f0c040" />
     </>
   );
 }

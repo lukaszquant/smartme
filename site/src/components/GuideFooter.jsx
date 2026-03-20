@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export function GuideTranscriptBar({ transcriptPath, downloadFile, color }) {
+export function GuideTranscriptBar({ essayPath, color }) {
   return (
     <div
       style={{
@@ -15,11 +15,8 @@ export function GuideTranscriptBar({ transcriptPath, downloadFile, color }) {
         alignItems: "center",
       }}
     >
-      <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "#4a4a5a" }}>
-        Companion transcript:
-      </span>
       <Link
-        to={transcriptPath}
+        to={essayPath}
         style={{
           fontFamily: "'DM Sans', sans-serif",
           fontSize: 13,
@@ -32,24 +29,8 @@ export function GuideTranscriptBar({ transcriptPath, downloadFile, color }) {
           background: `${(color || "#f0c040")}08`,
         }}
       >
-        Read transcript
+        ← Read the essay
       </Link>
-      <a
-        href={downloadFile}
-        download
-        style={{
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: 13,
-          fontWeight: 600,
-          color: "#7a7a90",
-          textDecoration: "none",
-          padding: "6px 14px",
-          borderRadius: 7,
-          border: "1px solid #2a2a3a",
-        }}
-      >
-        Download .docx
-      </a>
     </div>
   );
 }

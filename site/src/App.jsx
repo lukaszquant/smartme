@@ -13,12 +13,12 @@ export default function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/blockchain" element={<Blockchain />} />
-        <Route path="/blockchain/transcript" element={<BlockchainTranscript />} />
-        <Route path="/fine-tuning" element={<FineTuning />} />
-        <Route path="/fine-tuning/transcript" element={<FineTuningTranscript />} />
-        <Route path="/monty-hall" element={<MontyHall />} />
-        <Route path="/monty-hall/transcript" element={<MontyHallTranscript />} />
+        <Route path="/blockchain" element={<BlockchainTranscript />} />
+        <Route path="/blockchain/interactive" element={<Blockchain />} />
+        <Route path="/fine-tuning" element={<FineTuningTranscript />} />
+        <Route path="/fine-tuning/interactive" element={<FineTuning />} />
+        <Route path="/monty-hall" element={<MontyHallTranscript />} />
+        <Route path="/monty-hall/interactive" element={<MontyHall />} />
       </Routes>
     </Layout>
   );

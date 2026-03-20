@@ -7,7 +7,7 @@ export default function MontyHallTranscript() {
       title="The Monty Hall Problem"
       subtitle="A walking audiobook — why you should always switch doors"
       html={html}
-      guidePath="/monty-hall"
+      interactivePath="/monty-hall/interactive"
       downloadFile="/downloads/monty-hall-transcript.docx"
       color="#f0c040"
     />

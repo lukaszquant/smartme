@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function TranscriptPage({ title, subtitle, html, guidePath, downloadFile, color }) {
+export default function TranscriptPage({ title, subtitle, html, interactivePath, downloadFile, color }) {
   return (
     <div
       style={{
@@ -16,22 +16,6 @@ export default function TranscriptPage({ title, subtitle, html, guidePath, downl
       />
 
       <div style={{ marginBottom: 32 }}>
-        <Link
-          to={guidePath}
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: 13,
-            color: color || "#7a7a90",
-            textDecoration: "none",
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            marginBottom: 16,
-          }}
-        >
-          ← Back to interactive guide
-        </Link>
-
         <h1
           style={{
             fontSize: 32,
@@ -48,26 +32,46 @@ export default function TranscriptPage({ title, subtitle, html, guidePath, downl
           <p style={{ fontSize: 16, color: "#7a7a90", margin: "0 0 16px" }}>{subtitle}</p>
         )}
 
-        <a
-          href={downloadFile}
-          download
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: 13,
-            fontWeight: 600,
-            color: color || "#f0c040",
-            textDecoration: "none",
-            padding: "8px 16px",
-            borderRadius: 8,
-            border: `1px solid ${(color || "#f0c040")}44`,
-            background: `${(color || "#f0c040")}08`,
-          }}
-        >
-          Download transcript (.docx)
-        </a>
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <Link
+            to={interactivePath}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: 13,
+              fontWeight: 600,
+              color: color || "#f0c040",
+              textDecoration: "none",
+              padding: "8px 16px",
+              borderRadius: 8,
+              border: `1px solid ${(color || "#f0c040")}44`,
+              background: `${(color || "#f0c040")}08`,
+            }}
+          >
+            Try the interactive version
+          </Link>
+          <a
+            href={downloadFile}
+            download
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: 13,
+              fontWeight: 600,
+              color: "#7a7a90",
+              textDecoration: "none",
+              padding: "8px 16px",
+              borderRadius: 8,
+              border: "1px solid #2a2a3a",
+            }}
+          >
+            Download .docx
+          </a>
+        </div>
       </div>
 
       <article
@@ -78,6 +82,41 @@ export default function TranscriptPage({ title, subtitle, html, guidePath, downl
           lineHeight: 1.8,
         }}
       />
+
+      <div style={{ marginTop: 40, paddingTop: 24, borderTop: "1px solid #1e1e2e", display: "flex", gap: 10, flexWrap: "wrap" }}>
+        <Link
+          to={interactivePath}
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 13,
+            fontWeight: 600,
+            color: color || "#f0c040",
+            textDecoration: "none",
+            padding: "10px 20px",
+            borderRadius: 8,
+            border: `1px solid ${(color || "#f0c040")}44`,
+            background: `${(color || "#f0c040")}08`,
+          }}
+        >
+          Try the interactive version
+        </Link>
+        <a
+          href={downloadFile}
+          download
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 13,
+            fontWeight: 600,
+            color: "#7a7a90",
+            textDecoration: "none",
+            padding: "10px 20px",
+            borderRadius: 8,
+            border: "1px solid #2a2a3a",
+          }}
+        >
+          Download .docx
+        </a>
+      </div>
 
       <style>{`
         article p { margin: 0 0 18px; }
