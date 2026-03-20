@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useDocumentHead } from "../hooks";
 
 const ESSAYS = [
   {
@@ -28,6 +29,7 @@ const ESSAYS = [
 ];
 
 export default function Home() {
+  useDocumentHead(null, "Walking audiobooks on ideas worth understanding. Download the transcript, load it into a text-to-speech reader, and learn while you walk.");
   return (
     <div
       style={{

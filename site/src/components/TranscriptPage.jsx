@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useDocumentHead } from "../hooks";
 
 export default function TranscriptPage({ title, subtitle, html, interactivePath, downloadFile, color }) {
+  useDocumentHead(title, subtitle);
   return (
     <div
       style={{
