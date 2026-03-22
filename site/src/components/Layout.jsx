@@ -79,6 +79,15 @@ export default function Layout({ children }) {
         >
           GitHub
         </a>
+        {" "}·{" "}
+        <a
+          href="https://github.com/lukaszquant/smartme/issues"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "#6a6a7a", textDecoration: "none" }}
+        >
+          Feedback
+        </a>
       </footer>
     </div>
   );
