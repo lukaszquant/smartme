@@ -66,12 +66,9 @@ export default function Home() {
         SmartMe
       </h1>
       <p style={{ color: "#c8c8d8", fontSize: 16, lineHeight: 1.7, marginBottom: 12 }}>
-        I make these for myself — walking audiobooks on topics I want to understand
-        better. Each one is written to be read aloud by a text-to-speech app like
-        Speechify, so you can learn while you walk.
-      </p>
-      <p style={{ color: "#c8c8d8", fontSize: 16, lineHeight: 1.7, marginBottom: 12 }}>
-        I found them useful and entertaining enough to share.
+        I make these for myself using AI agents — <strong style={{ color: "#e8e8f0" }}>walking
+        audiobook transcripts</strong> on topics I want to understand better or just
+        find interesting. Just plug one into a text-to-speech app like Speechify and GO!
       </p>
 
       <div
