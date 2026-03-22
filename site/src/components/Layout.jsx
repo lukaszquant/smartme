@@ -70,7 +70,7 @@ export default function Layout({ children }) {
           color: "#4a4a5a",
         }}
       >
-        Made by lukaszquant ·{" "}
+        Made by Łukasz · Created with AI ·{" "}
         <a
           href="https://github.com/lukaszquant/smartme"
           target="_blank"

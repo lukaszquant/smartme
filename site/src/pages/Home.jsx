@@ -68,7 +68,7 @@ export default function Home() {
       <p style={{ color: "#c8c8d8", fontSize: 16, lineHeight: 1.7, marginBottom: 12 }}>
         Walking <strong style={{ color: "#e8e8f0" }}>audiobook transcripts</strong> on
         topics I want to understand better or just find interesting. Sharing them
-        here in case anyone else does. Just plug one into a text-to-speech app
+        here in case you find them useful. Just plug one into a text-to-speech app
         like Speechify and GO!
       </p>
 
