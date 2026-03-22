@@ -70,7 +70,15 @@ export default function Layout({ children }) {
           color: "#4a4a5a",
         }}
       >
-        SmartMe — Interactive guides for curious minds
+        Made by lukaszquant ·{" "}
+        <a
+          href="https://github.com/lukaszquant/smartme"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "#6a6a7a", textDecoration: "none" }}
+        >
+          GitHub
+        </a>
       </footer>
     </div>
   );
