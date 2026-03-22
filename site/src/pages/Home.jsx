@@ -66,9 +66,10 @@ export default function Home() {
         SmartMe
       </h1>
       <p style={{ color: "#c8c8d8", fontSize: 16, lineHeight: 1.7, marginBottom: 12 }}>
-        I make these for myself using AI agents — <strong style={{ color: "#e8e8f0" }}>walking
-        audiobook transcripts</strong> on topics I want to understand better or just
-        find interesting. Just plug one into a text-to-speech app like Speechify and GO!
+        Walking <strong style={{ color: "#e8e8f0" }}>audiobook transcripts</strong> on
+        topics I want to understand better or just find interesting. Sharing them
+        here in case anyone else does. Just plug one into a text-to-speech app
+        like Speechify and GO!
       </p>
 
       <div
@@ -85,8 +86,9 @@ export default function Home() {
       >
         <span style={{ fontWeight: 700, color: "#e8e8f0" }}>How to use:</span>{" "}
         Read online, or download the .docx and load it into a text-to-speech reader
-        for a walking companion. Each piece also has an interactive version
-        with visualizations you can play with afterwards.
+        for a walking companion. Each piece also has an{" "}
+        <strong style={{ color: "#e8e8f0" }}>interactive version</strong> with
+        visualizations you can play with afterwards.
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
