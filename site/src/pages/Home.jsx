@@ -26,6 +26,14 @@ const ESSAYS = [
     icon: "🚪",
     color: "#f0c040",
   },
+  {
+    path: "/double-slit",
+    title: "The Double Slit Experiment",
+    description: "The most important experiment in physics — waves, particles, and why observation changes everything.",
+    tag: "~30 min read",
+    icon: "🌊",
+    color: "#e05050",
+  },
 ];
 
 export default function Home() {
@@ -63,8 +71,7 @@ export default function Home() {
         Speechify, so you can learn while you walk.
       </p>
       <p style={{ color: "#c8c8d8", fontSize: 16, lineHeight: 1.7, marginBottom: 12 }}>
-        I found them useful and entertaining enough to share. Feel free to use them
-        as a starting point and tweak for your own level and interest.
+        I found them useful and entertaining enough to share.
       </p>
 
       <div

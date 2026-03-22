@@ -4,6 +4,7 @@ const NAV_ITEMS = [
   { path: "/blockchain", label: "Blockchain" },
   { path: "/fine-tuning", label: "Fine-Tuning" },
   { path: "/monty-hall", label: "Monty Hall" },
+  { path: "/double-slit", label: "Double Slit" },
 ];
 
 export default function Layout({ children }) {
@@ -44,11 +45,11 @@ export default function Layout({ children }) {
               fontFamily: "'DM Sans', sans-serif",
               fontSize: 13,
               fontWeight: 500,
-              color: pathname === item.path ? "#f0c040" : "#7a7a90",
+              color: pathname.startsWith(item.path) ? "#f0c040" : "#7a7a90",
               textDecoration: "none",
               padding: "5px 10px",
               borderRadius: 6,
-              background: pathname === item.path ? "#f0c04010" : "transparent",
+              background: pathname.startsWith(item.path) ? "#f0c04010" : "transparent",
               transition: "all 0.2s",
             }}
           >
