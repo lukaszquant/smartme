@@ -5,7 +5,7 @@ export default function MontyHallTranscript() {
   return (
     <TranscriptPage
       title="The Monty Hall Problem"
-      subtitle="A walking audiobook — why you should always switch doors"
+      subtitle="Why you should always switch doors · ~12 min listen"
       html={html}
       interactivePath="/monty-hall/interactive"
       downloadFile="/downloads/monty-hall-transcript.docx"

@@ -5,7 +5,7 @@ export default function BlockchainTranscript() {
   return (
     <TranscriptPage
       title="Blockchain Explained"
-      subtitle="A walk-friendly audio transcript with everyday analogies and real-world examples"
+      subtitle="A walk-friendly guide with everyday analogies · ~35 min listen"
       html={html}
       interactivePath="/blockchain/interactive"
       downloadFile="/downloads/blockchain-transcript.docx"
