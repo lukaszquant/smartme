@@ -34,6 +34,22 @@ const ESSAYS = [
     icon: "🌊",
     color: "#e05050",
   },
+  {
+    path: "/clear-vs-strong",
+    title: "The Expert Blind Spot",
+    description: "Why clear intuitions are often weak predictions — and why intelligence makes the trap worse, not better. Based on Kahneman & Duke.",
+    tag: "~18 min listen",
+    icon: "🧠",
+    color: "#c8a96e",
+  },
+  {
+    path: "/hard-to-vary",
+    title: "The Hard-to-Vary Criterion",
+    description: "What separates good explanations from bad ones — and why matching the data is nowhere near enough. Based on David Deutsch.",
+    tag: "~16 min listen",
+    icon: "🧩",
+    color: "#e8c547",
+  },
 ];
 
 export default function Home() {

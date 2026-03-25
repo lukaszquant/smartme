@@ -10,6 +10,10 @@ import FineTuningTranscript from "./pages/FineTuningTranscript";
 import MontyHallTranscript from "./pages/MontyHallTranscript";
 import DoubleSlit from "./pages/DoubleSlit";
 import DoubleSlitTranscript from "./pages/DoubleSlitTranscript";
+import ClearVsStrong from "./pages/ClearVsStrong";
+import ClearVsStrongTranscript from "./pages/ClearVsStrongTranscript";
+import HardToVary from "./pages/HardToVary";
+import HardToVaryTranscript from "./pages/HardToVaryTranscript";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -26,6 +30,10 @@ export default function App() {
         <Route path="/monty-hall/interactive" element={<MontyHall />} />
         <Route path="/double-slit" element={<DoubleSlitTranscript />} />
         <Route path="/double-slit/interactive" element={<DoubleSlit />} />
+        <Route path="/clear-vs-strong" element={<ClearVsStrongTranscript />} />
+        <Route path="/clear-vs-strong/interactive" element={<ClearVsStrong />} />
+        <Route path="/hard-to-vary" element={<HardToVaryTranscript />} />
+        <Route path="/hard-to-vary/interactive" element={<HardToVary />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
