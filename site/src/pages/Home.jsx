@@ -107,19 +107,21 @@ export default function Home() {
         visualizations you can play with afterwards.
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12 }}>
         {ESSAYS.map((essay) => (
           <Link
             key={essay.path}
             to={essay.path}
             style={{
-              display: "block",
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
               textDecoration: "none",
               color: "inherit",
               background: "#13131a",
               border: "1px solid #1e1e2e",
-              borderRadius: 14,
-              padding: "24px",
+              borderRadius: 12,
+              padding: "16px 18px",
               transition: "border-color 0.2s, transform 0.2s",
             }}
             onMouseEnter={(e) => {
@@ -131,26 +133,18 @@ export default function Home() {
               e.currentTarget.style.transform = "translateY(0)";
             }}
           >
-            <div style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
-              <span style={{ fontSize: 32, flexShrink: 0 }}>{essay.icon}</span>
-              <div style={{ flex: 1 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
-                  <h2 style={{ fontSize: 18, fontWeight: 700, color: essay.color, margin: 0 }}>
-                    {essay.title}
-                  </h2>
-                  <span style={{
-                    fontFamily: "monospace",
-                    fontSize: 11,
-                    color: "#4a4a5a",
-                    flexShrink: 0,
-                  }}>
-                    {essay.tag}
-                  </span>
-                </div>
-                <p style={{ fontSize: 14, color: "#7a7a90", lineHeight: 1.6, margin: 0 }}>
-                  {essay.description}
-                </p>
-              </div>
+            <span style={{ fontSize: 24, flexShrink: 0 }}>{essay.icon}</span>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <h2 style={{ fontSize: 14, fontWeight: 700, color: essay.color, margin: 0, lineHeight: 1.3 }}>
+                {essay.title}
+              </h2>
+              <span style={{
+                fontFamily: "monospace",
+                fontSize: 11,
+                color: "#4a4a5a",
+              }}>
+                {essay.tag}
+              </span>
             </div>
           </Link>
         ))}
