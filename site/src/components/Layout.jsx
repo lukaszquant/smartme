@@ -5,6 +5,8 @@ const NAV_ITEMS = [
   { path: "/fine-tuning", label: "Fine-Tuning" },
   { path: "/monty-hall", label: "Monty Hall" },
   { path: "/double-slit", label: "Double Slit" },
+  { path: "/clear-vs-strong", label: "Expert Blind Spot" },
+  { path: "/hard-to-vary", label: "Hard to Vary" },
 ];
 
 export default function Layout({ children }) {
