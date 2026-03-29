@@ -14,6 +14,10 @@ import ClearVsStrong from "./pages/ClearVsStrong";
 import ClearVsStrongTranscript from "./pages/ClearVsStrongTranscript";
 import HardToVary from "./pages/HardToVary";
 import HardToVaryTranscript from "./pages/HardToVaryTranscript";
+import GroupPower from "./pages/GroupPower";
+import GroupPowerTranscript from "./pages/GroupPowerTranscript";
+import Llm from "./pages/Llm";
+import LlmTranscript from "./pages/LlmTranscript";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -34,6 +38,10 @@ export default function App() {
         <Route path="/clear-vs-strong/interactive" element={<ClearVsStrong />} />
         <Route path="/hard-to-vary" element={<HardToVaryTranscript />} />
         <Route path="/hard-to-vary/interactive" element={<HardToVary />} />
+        <Route path="/group-power" element={<GroupPowerTranscript />} />
+        <Route path="/group-power/interactive" element={<GroupPower />} />
+        <Route path="/llm" element={<LlmTranscript />} />
+        <Route path="/llm/interactive" element={<Llm />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>

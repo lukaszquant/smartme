@@ -7,6 +7,8 @@ const NAV_ITEMS = [
   { path: "/double-slit", label: "Double Slit" },
   { path: "/clear-vs-strong", label: "Expert Blind Spot" },
   { path: "/hard-to-vary", label: "Hard to Vary" },
+  { path: "/group-power", label: "Group Power" },
+  { path: "/llm", label: "LLMs" },
 ];
 
 export default function Layout({ children }) {

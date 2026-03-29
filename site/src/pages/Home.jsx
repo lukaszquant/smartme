@@ -50,6 +50,22 @@ const ESSAYS = [
     icon: "🧩",
     color: "#e8c547",
   },
+  {
+    path: "/group-power",
+    title: "The Power of the Group",
+    description: "Why groups make better decisions — when structured right. Based on Kahneman, Duke, and Deutsch.",
+    tag: "~20 min listen",
+    icon: "👥",
+    color: "#3a9e6e",
+  },
+  {
+    path: "/llm",
+    title: "How LLMs Work",
+    description: "From autocomplete to emergent intelligence — what large language models actually do under the hood.",
+    tag: "~25 min listen",
+    icon: "🤖",
+    color: "#e94560",
+  },
 ];
 
 export default function Home() {
