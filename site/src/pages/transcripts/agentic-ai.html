@@ -1,0 +1,80 @@
+<p><strong>Claude Code as Your Agent</strong></p>
+<p><em>A walking script on making the most of what you already have — ~24 min at 1.2x</em></p>
+<p>* * *</p>
+<p><strong>Part 1 — You Are Already Inside an Agent</strong></p>
+<p>Here is something most Claude Code users do not realize. You are not using a chatbot that happens to live in VS Code. You are using a full agentic system. It has a control loop, tool access, memory, sub-agents, and context engineering built in. Everything we talked about in the Anthropic blog post, compaction, structured notes, just-in-time retrieval, sub-agent architectures, all of it is implemented in the tool you already use every day.</p>
+<p>The reason this matters is that most people use Claude Code like a chatbot. They type a question, get an answer, type another question. They treat it like Stack Overflow with better search. That is like buying a Formula One car and only driving it in first gear. The tool has capabilities that fundamentally change how you work, but only if you know they are there and you know how to engage them.</p>
+<p>Let me walk you through each capability with a concrete example so you can see not just what it does, but how you would actually use it in your sports modelling workflow.</p>
+<p>* * *</p>
+<p><strong>Part 2 — Compaction: When Your Context Starts Rotting</strong></p>
+<p>Let me paint a scenario. You have been working with Claude Code for thirty minutes on a complex refactor of your prediction pipeline. You started by asking Claude to understand the existing code. It read fifteen files. Then you asked it to plan the refactor. It produced a detailed plan. Then you started executing. You are on step four of seven, and you notice something. Claude’s responses are getting worse. It is repeating things it already said. It is forgetting a decision you agreed on ten minutes ago. It just suggested an approach that contradicts its own plan.</p>
+<p>What is happening is context rot. Your context window is packed with file contents from the exploration phase, the full plan, three rounds of code edits with their diffs, tool outputs from running tests, and your back-and-forth conversation. Most of that is stale.</p>
+<p>Here is what to do. Run slash compact. Claude will summarize the entire conversation, keeping the key decisions and current state while discarding the verbose exploration and old tool outputs. After compaction, your context might drop from ninety percent full to thirty percent full, and Claude’s next response will be dramatically sharper.</p>
+<p>For your sports modelling work, here is a concrete example. You ask Claude to analyze an expected goals model that has been underperforming on recent match data. Claude reads your xG model file, your feature engineering pipeline, your match dataset schema, and your evaluation results. That is already a lot of context. Then you identify that the shot quality features are stale because the data provider changed their event definitions last season. Now you want Claude to implement the fix. Before you ask it to code, run slash compact. All that diagnostic exploration gets summarized, and Claude has a fresh attention budget for the implementation work.</p>
+<p>* * *</p>
+<p><strong>Part 3 — Structured Notes: Memory That Survives Resets</strong></p>
+<p>Compaction helps within a session. But what about across sessions? What about a project that spans days or weeks?</p>
+<p>This is where structured note-taking transforms everything. You have Claude write a markdown file that captures the current state of the project, the key decisions made, what has been completed, and what is left to do. Then when you start a fresh session, you point Claude at those notes and it picks up exactly where you left off.</p>
+<p>Let me give you a concrete example. You are building a new player rating model. Day one, you and Claude explore the academic literature on Elo variants and Glicko systems, decide on a Bayesian approach with time-decay, and define the feature set: minutes played, expected goals contribution, progressive passes, and pressures. At the end of the session, you say: write everything we decided into a file called PLAYER_RATING_NOTES.md. Claude writes a clean, structured document.</p>
+<p>Day two, you start a new session. You say: read at-mention PLAYER_RATING_NOTES.md and continue where we left off. Claude reads the notes, understands the full context, and is ready to implement the next phase with a completely fresh context window. No compaction artifacts. No stale tool outputs. Just clean notes and a full attention budget.</p>
+<p>The power user version: instead of writing notes at the end, have Claude update the notes continuously. Every time a significant decision is made, you say: update PLAYER_RATING_NOTES.md with what we just decided. If your session crashes, the notes are always current.</p>
+<p>* * *</p>
+<p><strong>Part 4 — CLAUDE.md: Your Right-Altitude System Prompt</strong></p>
+<p>Your CLAUDE.md file is the most important file in your project for working with Claude Code. It is loaded into context at the start of every session. Boris Cherny keeps his at about a hundred lines. His golden rule: for each line, ask, would removing this cause Claude to make a mistake? If not, cut it.</p>
+<p>Section one: project overview. This project builds predictive models for sports outcomes, player performance, and betting market analysis. The core abstractions are Model, FeaturePipeline, Evaluator, and MatchDataset. The models directory contains one file per model. The data directory contains match and player event data via our API.</p>
+<p>Section two: build and test commands. Run tests with pytest dash v. Lint with ruff check dot. Type check with mypy src. Evaluate a model with python evaluate.py dash dash model xg_v2 dash dash league EPL dash dash seasons 2022-2024.</p>
+<p>Section three: code conventions. All timestamps UTC. Use pandas DataFrames for match and event data. Never mutate input DataFrames in place. Model files must include a docstring with the modelling approach, target variable, feature set, and expected calibration range.</p>
+<p>Section four: common mistakes. This grows over time. Entries might include: never include post-match data like final score when building pre-match features, that is target leakage; always split train and test by time, never randomly; when calculating rolling averages for team form, use only completed matches before the prediction date; Elo ratings must be initialized per-team per-season with regression-to-mean, not carried over raw.</p>
+<p>Section five: verification. Run the type checker, no errors. Run the test suite, all pass. If modifying a model, run a calibration check and verify the Brier score is within five percent of the previous value.</p>
+<p>Path-scoped rules add a second layer. A rule scoped to your models directory might say: every model must have a predict method returning probabilities between zero and one. A rule scoped to your data pipeline says: always validate row counts before and after any transformation. These only load when relevant, keeping your always-loaded CLAUDE.md lean.</p>
+<p>* * *</p>
+<p><strong>Part 5 — At-Mentions and Agentic Search</strong></p>
+<p>When you type at-mention followed by a filename, you are doing context engineering by hand. You are telling the model: this file is relevant right now, read it.</p>
+<p>Concrete example. Instead of saying add shot angle to the xG model, say: add shot angle as a feature to at-mention src/models/xg_model.py, using the same pattern as at-mention src/features/shot_features.py. Claude reads exactly two files instead of twelve. Faster, more accurate, less context consumed.</p>
+<p>You can mention directories with a trailing slash. Saying at-mention src/models/ gives Claude the directory listing without loading every file. You can be line-specific with Option-K: at-mention xg_model.py hash 45-80 loads exactly thirty-five lines, not five hundred.</p>
+<p>When you do not know which files are relevant, agentic search takes over. Claude uses grep, find, head, and tail autonomously. Your directory structure is itself a form of context engineering.</p>
+<p>* * *</p>
+<p><strong>Part 6 — Sub-Agents: Clean Contexts for Deep Exploration</strong></p>
+<p>Sub-agents solve the fundamental constraint: context is finite. You want Claude to understand how your evaluation pipeline calculates Brier scores, whether you have calibration plotting utilities, and how the feature pipeline handles missing match events. If Claude investigates all of this in your main session, it will read twenty or thirty files before you write a single line of code.</p>
+<p>Instead, you say: use sub-agents to investigate how our evaluation pipeline calculates Brier scores, whether we have calibration utilities, and how the feature pipeline handles missing events. Report back with a summary. Claude spins up separate sub-agents. Each returns a one to two thousand token summary. Your main context stays clean.</p>
+<p>Use sub-agents for verification too: use a sub-agent to review the changes I just made and check for data leakage or look-ahead bias in the feature construction. Fresh eyes, clean context.</p>
+<p>* * *</p>
+<p><strong>Part 7 — The Plan-Review-Execute Workflow</strong></p>
+<p>Boris Cherny’s team never lets Claude jump straight into coding. They always start with a plan.</p>
+<p>You say: I want to build a match outcome prediction model that takes team Elo ratings, recent form, home advantage, rest days, and key player availability, then outputs win-draw-loss probabilities. Create a phased plan with tests for each phase.</p>
+<p>Claude produces phases: implement Elo with time decay, build the feature pipeline, implement multinomial logistic regression, integrate with evaluation. Each phase has specific tests.</p>
+<p>The key step: spin up a second session and say: review this plan as a senior sports analyst. The reviewer catches edge cases. For example: the plan does not account for promoted teams that have no Elo history. Phase one needs a default initialization strategy. That is a real insight that saves you from a serious bug.</p>
+<p>Execute phase by phase. Tests after each phase. Git commit after each success.</p>
+<p>* * *</p>
+<p><strong>Part 8 — The Interview Technique</strong></p>
+<p>You say: I want to build a live in-play model that updates win probabilities as events happen during a match. Interview me in detail using the AskUserQuestion tool.</p>
+<p>Claude asks: What sport? What events update probabilities: goals, red cards, xG accumulation? How often do you recalculate? What is the baseline pre-match model? Output format: probabilities, implied odds, value signals? Real-time latency target?</p>
+<p>You answer. Claude synthesizes a specification. Fresh session, implement from the spec. Clean context, clear brief, no ambiguity.</p>
+<p>* * *</p>
+<p><strong>Part 9 — Mistake-Driven Learning and Hooks</strong></p>
+<p>Boris Cherny’s golden rule: anytime Claude does something wrong, have it write a rule to prevent the same mistake. You say: you just included the match result as a feature in the pre-match prediction model. That is target leakage. Write a rule in CLAUDE.md so this never happens again.</p>
+<p>Over time, your CLAUDE.md becomes a living catalog of project-specific lessons. Version-controlled and shared with your team.</p>
+<p>CLAUDE.md is advisory, followed about eighty percent of the time. For things that must happen every single time, you use hooks. A PostToolUse hook runs your linter after every edit. A Stop hook runs pytest after every response. CLAUDE.md sets the intent. Hooks enforce the minimum bar.</p>
+<p>Concrete example: your CLAUDE.md says, when modifying a model, run a calibration check to verify the Brier score has not degraded. Your hook says: after any edit to a file in the models directory, run pytest tests/test_models.py. Guidance plus enforcement.</p>
+<p>* * *</p>
+<p><strong>Part 10 — Parallel Sessions and Clear-and-Rebuild</strong></p>
+<p>Boris runs ten to fifteen sessions simultaneously. Each in its own git worktree. One builds a new model. Another reviews a PR. A third investigates why the data pipeline missed last night’s fixtures. A fourth writes documentation. All parallel, all clean contexts, all separate branches.</p>
+<p>Slash branch forks a session mid-conversation. Try two approaches to feature engineering: rolling averages in one branch, exponential decay in the other. Keep whichever calibrates better.</p>
+<p>The kitchen sink anti-pattern: mixing unrelated tasks in one session. The fix: one task per session, slash clear between unrelated tasks. After two failed corrections, slash clear and write a better initial prompt. A clean context with a good prompt beats a cluttered context with a perfect prompt every time.</p>
+<p>* * *</p>
+<p><strong>Part 11 — The Twelve Common Mistakes</strong></p>
+<p>Each one is a context engineering failure with a concrete fix.</p>
+<p>One: the kitchen sink session. Mixing unrelated tasks pollutes context. Fix: one task per session, slash clear between tasks.</p>
+<p>Two: correcting over and over. After two failed corrections, context is poisoned. Fix: slash clear, write a better initial prompt.</p>
+<p>Three: over-specified CLAUDE.md. Five hundred lines means half get ignored. Fix: prune to a hundred lines.</p>
+<p>Four: negation in rules. Do not include match results in features activates the concept of match results. Fix: phrase as what to do. Pre-match features must use only data available before kickoff.</p>
+<p>Five: skipping the plan. Straight to code means three refactors later. Fix: plan mode first, review second, execute third.</p>
+<p>Six: trusting output without review. Claude writes plausible code. The sports modelling danger is subtle data leakage, features that accidentally encode the outcome. Fix: always review feature engineering for leakage and evaluation for temporal contamination.</p>
+<p>Seven: no verification criteria. Fix: tell Claude to run tests, check calibration, validate outputs. Set up hooks for automation.</p>
+<p>Eight: mixing exploration and execution. Fix: explore in one session, write a spec, execute in a fresh session.</p>
+<p>Nine: too many tools. Performance degrades as tools increase beyond what is needed. Fix: start minimal, add one at a time.</p>
+<p>Ten: not using sub-agents. Any investigation reading five-plus files should be a sub-agent task.</p>
+<p>Eleven: not at-mentioning known files. Add shot angle to the xG model reads twelve files. Add shot angle to at-mention src/models/xg_model.py reads one. Fix: when you know the target, at-mention directly.</p>
+<p>Twelve: never updating CLAUDE.md. Same errors repeat. Fix: after every project-specific mistake, have Claude write a prevention rule.</p>
+<p>* * *</p>
+<p>This is the deepest insight about context engineering applied to your daily work. You are not just managing Claude’s context. You are managing your own workflow to produce the cleanest possible context at every step. The people who get extraordinary results are not better prompters. They are better context engineers. They clear aggressively, note-take consistently, compact proactively, at-mention precisely, and delegate to sub-agents generously. Every one of those actions is available to you right now.</p>

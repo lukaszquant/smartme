@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { path: "/hard-to-vary", label: "Hard to Vary" },
   { path: "/group-power", label: "Group Power" },
   { path: "/llm", label: "LLMs" },
+  { path: "/agentic-ai", label: "Agentic AI" },
 ];
 
 export default function Layout({ children }) {

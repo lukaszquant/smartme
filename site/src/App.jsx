@@ -18,6 +18,8 @@ import GroupPower from "./pages/GroupPower";
 import GroupPowerTranscript from "./pages/GroupPowerTranscript";
 import Llm from "./pages/Llm";
 import LlmTranscript from "./pages/LlmTranscript";
+import AgenticAi from "./pages/AgenticAi";
+import AgenticAiTranscript from "./pages/AgenticAiTranscript";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -42,6 +44,8 @@ export default function App() {
         <Route path="/group-power/interactive" element={<GroupPower />} />
         <Route path="/llm" element={<LlmTranscript />} />
         <Route path="/llm/interactive" element={<Llm />} />
+        <Route path="/agentic-ai" element={<AgenticAiTranscript />} />
+        <Route path="/agentic-ai/interactive" element={<AgenticAi />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>

@@ -66,6 +66,14 @@ const ESSAYS = [
     icon: "🤖",
     color: "#e94560",
   },
+  {
+    path: "/agentic-ai",
+    title: "Claude Code as Your Agent",
+    description: "Mastering Claude Code's agentic capabilities — compaction, sub-agents, CLAUDE.md, and power workflows.",
+    tag: "~24 min listen",
+    icon: "🤝",
+    color: "#3b82f6",
+  },
 ];
 
 export default function Home() {
